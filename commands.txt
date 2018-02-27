@@ -1,0 +1,105 @@
+﻿//@TODO Improve performance/coding
+
+//Clean
+^\s<\d{18}>\s
+""
+
+//Enters
+\n^\t
+\t
+
+//Trim spaces
+"     [Action ] -"
+"  [Action ]"
+"     [Info   ] -"
+"  [Info   ]"
+"     [Warning] -"
+"  [Warning]"
+"     [Error  ] -"
+"  [Error  ]"
+
+//Tab
+\s\s\s
+\t
+
+//Remarks
+.*Remark:.*\r?\n
+""
+
+//Direct SQL
+STMT: SELECT$
+STMT:\nSELECT
+
+//Direct SQL
+STMT: SELECT DISTINCT$
+STMT:\nSELECT
+
+//Comment folding
+Message >> \r?\n--------------------------------------------------------------------------------
+Message >>\n{--------------------------------------------------------------------------------
+
+Pressionado: .\r?\n--------------------------------------------------------------------------------
+Pressionado: $1\n--------------------------------------------------------------------------------}
+
+//Erase "Flow"
+"Flow - "
+""
+
+//Erase "Variable" @TODO "Variable Change"
+"Variable "
+""
+
+//Simplification
+Flow - Block If:
+Block If   {
+	
+Flow - Block Else:
+Block Else |
+
+Flow - Block While:
+//Block While{
+
+Flow - Block End:
+Block End  }
+
+Starts Task Prefix
+Task Prefix{
+
+Ends Task Prefix
+}
+
+Starts Task  Suffix
+Task Suffix{
+
+Ends Task Suffix
+}
+
+Starts Record Prefix
+Record Prefix{
+
+Ends Record Prefix
+}
+
+Starts Record Suffix
+Record Suffix{
+
+Ends Record Suffix
+}
+
+Starts Control Prefix
+Control Prefix{
+
+Ends Control Prefix
+}
+
+Starts Control Verification
+Control Verification{
+
+Ends Control Verification
+}
+
+Starts Control Suffix
+Control Suffix{
+
+Ends Control Suffix
+}
